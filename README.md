@@ -2,9 +2,10 @@
 Easy &amp; Safty Encoding DataBase With Laravel
 
 
-Route::get('/tableconvertor/{table}' ,['middleware'=>'Auth' , function($table){
 
-        $fields = DB::select("DESCRIBE {$table}");
+
+    Route::get('/tableconvertor/{table}' ,['middleware'=>'Auth' , function($table){
+       $fields = DB::select("DESCRIBE {$table}");
         foreach ($fields as $field ){
             if(substr($field->Type, 0 , 7)  == "varchar"){
                 $num=substr(explode('(',$field->Type)[1],0,-1);
@@ -17,6 +18,7 @@ Route::get('/tableconvertor/{table}' ,['middleware'=>'Auth' , function($table){
         dd('DONE:    ' . $table);
     }]);
     
-    Example  :   http://yoursites.com/tableconvertor/TABLENAME
+  
     
     
+  Example  :   http://yoursites.com/tableconvertor/TABLENAME
